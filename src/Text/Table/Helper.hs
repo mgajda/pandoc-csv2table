@@ -84,7 +84,7 @@ applyToTuple f (x, y) = ((f x), (f y))
 
 -- | Add Inline from Image into Table as the caption
 addInlineLabel :: [J.Inline] -> J.Pandoc -> J.Pandoc
-addInlineLabel i (J.Pandoc m [(J.Table _ as ds ts tss)]) = J.Pandoc m [(J.Table i as ds ts tss)]
+addInlineLabel i (J.Pandoc m [(J.Table as _ ds th ts tss)]) = J.Pandoc m [(J.Table as (J.Caption Nothing [J.Plain i]) ds th ts tss)]
 addInlineLabel _ x = x
 
 -- | Extracts Blocks from Pandoc Document
